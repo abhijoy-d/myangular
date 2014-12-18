@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="myangularscript.js"></script>
+	<script>
+	var myApp = angular.module('abhijoyApp',[]);
+	
+	myApp.controller.name = "CtlName";
+	
+
+	myApp.controller('personController', ['$scope', function($scope) {
+		$scope.firstName = 'Alan';
+		$scope.lastName = 'Wake'; 
+		$scope.add = function() {
+			console.log('12');
+		}
+	}]);
+	
+	myApp.controller('nxtController', ['$scope', function($scope) {
+		$scope.greeting = "Alan's Greeting";
+	}]);
+	
+	myApp.controller('addController',['$scope', function($scope) {
+		$scope.double = function(value,secondVal) { return value * secondVal; }
+	}]);
+	
+	</script>
+</head>
+<body ng-app="abhijoyApp">
+	<div ng-controller="personController">
+	  <p>Name: <input type="text" ng-model="firstName" /></p>
+	  <p>Name: <input type="text" ng-model="lastName" /></p>
+	  <p>Full Name: {{firstName + " " + lastName}} </p>
+	  <input type="button" ng-click="add()" name="add" value="">
+	</div>
+	
+	<div ng-controller="nxtController">
+		{{greeting}}
+	</div>
+	<div ng-controller="addController">
+		<input type="text" name="txtVal" ng-model="num"  />
+		<input type="text" name="txtVal" ng-model="secondNum" />
+		<br/>
+		{{ double(num,secondNum) }}
+	</div>
+</body>
+
+</html> 
